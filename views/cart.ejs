@@ -1,7 +1,8 @@
 <%- include('header') %>
 
   <% var sum%>
-  <% cart.items.reverse().forEach(function (item) { %>
+
+  <% if(cart != null) cart.items.reverse().forEach(function (item) { %>
     <%- include('components/cart-item', { item: item }, {sum: 0}) %>
   <% }) %> 
 
