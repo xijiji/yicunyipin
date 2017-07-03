@@ -1,0 +1,36 @@
+<%- include('header') %>
+
+<div class="ui grid">
+  <div class="four wide column"></div>
+  <div class="eight wide column">
+    <form class="ui form segment" method="post" enctype="multipart/form-data">
+      <div class="field required">
+        <label>产品名称</label>
+        <input placeholder="产品名称" type="text" name="name">
+      </div>
+      <div class="field required">
+        <label>产品价格</label>
+        <input placeholder="价格" type="text" name="price">
+      </div>
+      <div class="field required">
+        <label>产品描述</label>
+        <textarea name="describe" rows="5"></textarea>
+      </div>
+      <div class="field required">
+        <label>产品产地</label>
+        <input placeholder="产品产地" type="text" name="place">
+      </div>
+      <div class="field required">
+        <label>产品种类</label>
+        <input placeholder="产品产地" type="text" name="category">
+      </div>
+      <div class="field required">
+        <label>产品图像</label>
+        <input type="file" name="avatar">
+      </div>
+      <input type="submit" class="ui button fluid" value="添加">
+    </div>
+  </form>
+</div>
+
+<%- include('footer') %>

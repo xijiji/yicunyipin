@@ -1,0 +1,21 @@
+<%- include('header') %>
+
+  <% var sum%>
+  <% cart.items.reverse().forEach(function (item) { %>
+    <%- include('components/cart-item', { item: item }, {sum: 0}) %>
+  <% }) %> 
+
+  <div class="ui grid">
+    <div class="five wide column">   
+    </div>
+    <div class="seven wide column">
+      <span style="font-weight: bold; font-size: 16px;">总计：¥<%=sum%></span>
+      <span class="tag right" style="float: right">  
+        <a class="ui primary button"
+          href="/cart">
+          结账
+        </a>
+      </span>  
+    </div>
+ </div>
+<%- include('footer') %>

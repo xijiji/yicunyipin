@@ -1,0 +1,7 @@
+<%- include('header') %>
+
+   <% products.forEach(function (product) { %>
+    <%- include('components/product-content', { product: product }) %>
+  <% }) %> 
+
+<%- include('footer') %>

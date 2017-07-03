@@ -1,0 +1,33 @@
+<div class="product-content">
+  <div class="ui grid">
+    <div class="three wide column">   
+    </div>
+    <div class="nine wide column">
+      <div class="ui segment ui grid">
+        <div class="four wide column">
+          <a class="avatar"
+             href="/product?productId=<%= product._id %>"
+             data-title="<%= product.name %>"
+             data-content="<%= product.describe%>">
+            <img class="avatar" src="/img/<%= product.avatar %>">
+          </a>
+        </div>
+        <div class="twelve wide column">
+          <h3><a href="/product?productId=<%= product._id %>"><%= product.name %></a></h3>
+          <pre class="product-des-inline"><%- product.describe %></pre>
+          <div>
+            <span class="tag">¥<%= product.price %></span>
+            
+            <span class="tag right">  
+              <span style="margin-right: 20px;">购买量(<%= product.pv %>)</span>
+              <a class="ui primary button"
+                href="/cart/<%= product._id %>/addCart">
+                <i class="shop icon"></i> 加入购物车
+              </a>
+            </span>
+          </div>
+        </div> 
+      </div>
+    </div>
+  </div>
+</div>

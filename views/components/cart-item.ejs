@@ -1,0 +1,45 @@
+<div class="product-content">
+  <div class="ui grid">
+    <div class="five wide column">   
+    </div>
+    <div class="seven wide column">
+      <div class="ui segment ui grid">
+        <div class="two wide column">
+          <input class="check-input" type="checkbox" style="margin-top:40px" onclick="checkInput()">
+        </div>
+        <div class="four wide column">
+          <a class="avatar"
+             href="/product?productId=<%= item.itemId %>"
+             data-title="<%= item.name %>">
+            <img class="avatar" src="/img/<%= item.img %>">
+          </a>
+        </div>
+        <div class="ten wide column">
+          <h3><a href="/product?productId=<%= item.itemId %>"><%= item.name %></a></h3>
+          <div>
+            <span class="tag">¥<%= item.price %></span>
+            <div class="ui button" style="padding: 0px; margin-left: 10px">
+              <div class="ui button" style="width:16px">-</div>
+              <a class="ui basic label quantity">0</a>
+              <div class="ui button" style="width:16px">+</div>
+            </div>
+            <span class="tag right">  
+              <a class="ui primary button"
+                href="/cart/<%= item.itemId %>/delete">
+                删除
+              </a>
+            </span>
+          </div>
+        </div> 
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  function checkInput(){
+    if($('.check-input').prop("checked")) {
+      window.sum = 5;
+    }
+  }
+</script>
