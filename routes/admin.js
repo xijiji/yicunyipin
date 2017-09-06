@@ -4,26 +4,43 @@ var express = require('express');
 var router = express.Router();
 
 var ProductModel = require('../models/products');
+var UserModel = require('../models/users');
 var checkLogin = require('../middlewares/check').checkLogin;
 
-//GET /product 首页
+//GET /admin 首页
 router.get('/', function(req, res, next) {
+  res.render('admin-page');
+});
+
+//GET /admin/user-manage 用户管理页面
+router.get('/user-manage', function(req, res, next) {
+  UserModel.getUsers()
+    .then(function (users) {
+      res.render('user-manage', {
+        users: users
+      });
+    })
+    .catch(next);
+});
+
+//GET /admin/product-manage 产品管理页面
+router.get('/product-manage', function(req, res, next) {
+  res.render('product-manage');
+});
+
+//GET /admin/product-list 产品列表页面
+router.get('/product-list', function(req, res, next) {
   ProductModel.getProducts()
     .then(function (products) {
-      res.render('product', {
+      res.render('product-list', {
         products: products
       });
     })
     .catch(next);
 });
 
-//GET /product/addProduct 添加商品
-router.get('/addProduct', checkLogin, function(req, res, next) {
-  res.render('addProduct');
-})
-
 //POST /product 添加一件商品
-router.post('/addProduct', checkLogin, function(req, res, next) {
+router.post('/product-manage', checkLogin, function(req, res, next) {
   var name = req.fields.name;
   var price = req.fields.price;
   var describe = req.fields.describe;
@@ -72,5 +89,8 @@ router.post('/addProduct', checkLogin, function(req, res, next) {
     })
     .catch(next);
 });
+
+
+
 
 module.exports = router;

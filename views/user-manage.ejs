@@ -1,0 +1,33 @@
+<%- include('header') %>
+
+  <div class="ui grid">
+    <div class="two wide column"></div>
+    <div class="twelve wide column">
+      <table class="ui celled padded table">
+        <thead>
+          <tr><th class="single line">用户名</th>
+          <th>地址</th>
+          <th>电话</th>
+          <th>邮箱</th>
+          <th>性别</th>
+          <th>操作</th>
+        </tr></thead>
+        <tbody>
+          <% users.forEach(function (user) { %>
+            <tr>
+              <td class="single line"><%=user.name%></td>
+              <td class="single line"><%=user.address%></td>
+              <td class="single line"><%=user.phone%></td>
+              <td class="single line">2470634845@qq.com</td>
+              <td>女</td>
+              <td>
+                <a href="#">删除</a>
+              </td>
+            </tr>
+          <% }) %> 
+        </tbody>
+      </table>
+    </div> 
+  </div>
+
+<%- include('footer') %>

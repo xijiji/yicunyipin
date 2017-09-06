@@ -8,8 +8,20 @@ var routes = require('./routes');
 var pkg = require('./package');
 var winston = require('winston');
 var expressWinston = require('express-winston');
+const net = require('net');
+
+const server = net.createServer(function(socket) {
+  socket.on('end', function() {
+    console.log('server disconnected');
+  });
+  socket.on('data', function() {
+    socket.end('hello\r\n');
+  });
+});
+
 
 var app = express();
+
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -89,11 +101,15 @@ app.use(function (err, req, res, next) {
   });
 });
 
-if (module.parent) { //直接启动index.js则会监听端口启动程序，如果index.js被require了，则导出app，通常用于测试。
-  module.exports = app;
-} else {
-  // 监听端口，启动程序
-  app.listen(config.port, function () {
-    console.log(`${pkg.name} listening on port ${config.port}`);
-  });
-}
+// if (module.parent) { //直接启动index.js则会监听端口启动程序，如果index.js被require了，则导出app，通常用于测试。
+//   module.exports = app;
+// } else {
+//   // 监听端口，启动程序
+//   app.listen(config.port, function () {
+//     console.log(`${pkg.name} listening on port ${config.port}`);
+//   });
+// }
+module.exports = app;
+app.listen(config.port, function () {
+  console.log(`${pkg.name} listening on port ${config.port}`);
+});

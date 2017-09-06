@@ -1,0 +1,42 @@
+<%- include('header') %>
+
+  <div class="ui grid">
+    <div class="three wide column"></div>
+    <div class="ten wide column">
+      <div class="ui green three item menu">
+        <a class="item" href="/admin/product-manage">添加商品 </a>
+        <a class="active item" href="/admin/product-list">商品列表 </a>
+        <a class="item">商品维护 </a>
+      </div>
+      <table class="ui celled padded table">
+        <thead>
+          <tr><th class="single line">产品名称</th>
+          <th>价格</th>
+          <th>成本价格</th>
+          <th>产地</th>
+          <th>种类</th>
+          <th>库存量</th>
+          <th>关键字</th>
+          <th>操作</th>
+        </tr></thead>
+        <tbody>
+          <% products.forEach(function (product) { %>
+            <tr>
+              <td class="single line"><%=product.name%></td>
+              <td class="single line"><%=product.price%></td>
+              <td class="single line">0</td>
+              <td class="single line"><%=product.place%></td>
+              <td class="single line"><%=product.category%></td>
+              <td class="single line">22</td>
+              <td class="single line">关键字</td>
+              <td>
+                <a href="#">删除</a>
+              </td>
+            </tr>
+          <% }) %> 
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+<%- include('footer') %>
